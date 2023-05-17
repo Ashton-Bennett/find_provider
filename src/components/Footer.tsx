@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <div className="flex flex-col content-center flex-wrap justify-center bg-brand_blue h-24">
       <a
-        href="https://github.com/Ashton-Bennett"
+        href="https://github.com/Ashton-Bennett/find_provider"
         target="_blank"
         rel="noreferrer"
         className="transition duration-300 ease-in-out hover:opacity-60"
