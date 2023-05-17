@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import UserLocationForm from "./components/UserLocationForm";
+import ProviderFinder from "./components/ProviderFinder";
+import { provider } from "./types";
+import HeroSection from "./components/HeroSection";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
+  const [userLocation, setUserLocation] =
+    useState<google.maps.LatLngLiteral | null>(null);
+  const [providers, setProviders] = useState<provider[] | null | string>([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <main className="flex flex-col flex-wrap content-center font-mono font-family: Consolas, Monaco, Menlo">
+        <HeroSection />
+        <UserLocationForm
+          setUserLocation={setUserLocation}
+          setProviders={setProviders}
+        />
+        <ProviderFinder
+          userLocation={userLocation}
+          setUserLocation={setUserLocation}
+          providers={(providers as provider[]) || []}
+          setProviders={setProviders}
+        />
+      </main>
+      <Footer />
+    </>
   );
 }
 
