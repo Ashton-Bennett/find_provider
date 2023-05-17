@@ -136,7 +136,7 @@ const ProviderFinder: React.FC<providerProps> = ({
 
   return (
     <div className="max-w-screen-lg px-4">
-      <ul className="pt-20">
+      <section className="pt-20">
         {noResultsFound && (
           <h3 className="h-48">
             Sorry no providers in that area. Please try another.
@@ -155,7 +155,12 @@ const ProviderFinder: React.FC<providerProps> = ({
                       <img
                         src={provider.photos[0].getUrl()}
                         alt="store front"
-                        style={{ maxWidth: "200px", maxHeight: "200px" }}
+                        style={{
+                          width: "auto",
+                          height: "auto",
+                          maxWidth: "200px",
+                          maxHeight: "200px",
+                        }}
                         className="mb-2"
                       />
                     ) : (
@@ -180,10 +185,14 @@ const ProviderFinder: React.FC<providerProps> = ({
                   <br></br>
                   <div className="pr-4 flex sm:flex-col  justify-between max-w-xl">
                     <a
+                      aria-label="Call office"
                       className="transition duration-300 ease-in-out hover:opacity-60"
                       href={`tel:=${provider?.formatted_phone_number}`}
                     >
-                      <button className="rounded-full flex justify-center items-center bg-brand_green w-10 h-10 drop-shadow-lg">
+                      <button
+                        aria-label="Call office"
+                        className="rounded-full flex justify-center items-center bg-brand_green w-10 h-10 drop-shadow-lg"
+                      >
                         {" "}
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -199,12 +208,16 @@ const ProviderFinder: React.FC<providerProps> = ({
                       </button>
                     </a>
                     <a
+                      aria-label="Directions to office"
                       className="transition duration-300 ease-in-out hover:opacity-60"
                       href={`https://www.google.com/maps/dir/?api=1&destination=${provider.formatted_address}`}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <button className="rounded-full flex justify-center items-center bg-brand_orange w-10 h-10 drop-shadow-lg">
+                      <button
+                        aria-label="directions to office"
+                        className="rounded-full flex justify-center items-center bg-brand_orange w-10 h-10 drop-shadow-lg"
+                      >
                         {" "}
                         <svg
                           fill="white"
@@ -224,10 +237,14 @@ const ProviderFinder: React.FC<providerProps> = ({
                     </a>
                     {provider.website && (
                       <a
+                        aria-label="Link to website"
                         className="transition duration-300 ease-in-out hover:opacity-60"
                         href={provider.website}
                       >
-                        <button className="rounded-full flex justify-center items-center bg-brand_blue w-10 h-10 drop-shadow-lg">
+                        <button
+                          aria-label="link to office website"
+                          className="rounded-full flex justify-center items-center bg-brand_blue w-10 h-10 drop-shadow-lg"
+                        >
                           {" "}
                           <svg
                             fill="white"
@@ -250,7 +267,7 @@ const ProviderFinder: React.FC<providerProps> = ({
         ) : noResultsFound ? null : (
           <div className="h-48">Searching...</div>
         )}
-      </ul>
+      </section>
     </div>
   );
 };
