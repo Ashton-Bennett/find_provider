@@ -220,6 +220,8 @@ const ProviderFinder: React.FC<providerProps> = ({
                       >
                         {" "}
                         <svg
+                          width="24"
+                          height="24"
                           fill="white"
                           clipRule="evenodd"
                           fillRule="evenodd"
@@ -265,7 +267,10 @@ const ProviderFinder: React.FC<providerProps> = ({
             })}
           </>
         ) : noResultsFound ? null : (
-          <div className="h-48">Searching...</div>
+          <div className="h-48">
+            Searching... If haven't shared your location you will need to enter
+            it above.
+          </div>
         )}
       </section>
     </div>
