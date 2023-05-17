@@ -38,7 +38,6 @@ function App() {
           setUserLocation={setUserLocation}
           setProviders={setProviders}
         />
-
         <ProviderFinder
           userLocation={userLocation}
           setUserLocation={setUserLocation}

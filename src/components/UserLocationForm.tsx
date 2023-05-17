@@ -10,7 +10,6 @@ interface userLocationProps {
     React.SetStateAction<null | provider[] | string>
   >;
 }
-
 const UserLocationForm: React.FC<userLocationProps> = ({
   setUserLocation,
   setProviders,

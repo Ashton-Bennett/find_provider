@@ -44,6 +44,7 @@ test("renders the main element and header", () => {
   expect(main).toBeInTheDocument();
 });
 
+// Testing
 test("Renders ProviderFinder list", () => {
   render(
     <ProviderFinder
