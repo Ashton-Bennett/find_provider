@@ -1,7 +1,5 @@
 import { provider } from "../types";
-import { useLoadScript } from "@react-google-maps/api";
 import { useEffect, useState } from "react";
-import { libraries } from "../types";
 import genericPic1 from "../images/genericPics/jc-gellidon-xX0NVbJy8a8-unsplash.jpg";
 import genericPic2 from "../images/genericPics/national-cancer-institute-aelk4Tn0vlI-unsplash.jpg";
 import genericPic3 from "../images/genericPics/national-cancer-institute-oCLuFi9GYNA-unsplash.jpg";
@@ -17,21 +15,16 @@ interface providerProps {
   setProviders: React.Dispatch<
     React.SetStateAction<null | provider[] | string>
   >;
+  isLoaded: boolean;
 }
 const ProviderFinder: React.FC<providerProps> = ({
   userLocation,
   setUserLocation,
   providers,
   setProviders,
+  isLoaded,
 }) => {
   const [noResultsFound, setNoResultsFound] = useState<boolean>(false);
-  // Hook to connect to google API
-  const { isLoaded, loadError } = useLoadScript({
-    // @ts-ignore
-    // If api key is undefined error handling below will let us know.
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_TOKEN,
-    libraries,
-  });
 
   // Get the users location
   useEffect(() => {
@@ -127,14 +120,6 @@ const ProviderFinder: React.FC<providerProps> = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoaded, userLocation]);
-
-  if (loadError) {
-    return <div>Error loading Google Maps</div>;
-  }
-
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
 
   // Pictures for businesses that did not provide one to google
   const genericPhotos = [

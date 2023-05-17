@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useLoadScript, Autocomplete } from "@react-google-maps/api";
-import { provider, libraries } from "../types";
+import { Autocomplete } from "@react-google-maps/api";
+import { provider } from "../types";
 
 interface userLocationProps {
   setUserLocation: React.Dispatch<
@@ -17,22 +17,6 @@ const UserLocationForm: React.FC<userLocationProps> = ({
 }) => {
   const [autocomplete, setAutocomplete] =
     useState<google.maps.places.Autocomplete | null>(null);
-
-  //Hook to connect to google API
-  const { isLoaded, loadError } = useLoadScript({
-    // @ts-ignore
-    // If api key is undefined error handling below will let us know.
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_TOKEN,
-    libraries,
-  });
-
-  if (loadError) {
-    return <div>Error loading Google Maps, try refreshing the page. </div>;
-  }
-
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
 
   const onLoad = (autocomplete: any) => {
     setAutocomplete(autocomplete);

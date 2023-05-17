@@ -47,6 +47,7 @@ test("renders the main element and header", () => {
 test("Renders ProviderFinder list", () => {
   render(
     <ProviderFinder
+      isLoaded={true}
       userLocation={null}
       setUserLocation={function (
         value: SetStateAction<google.maps.LatLngLiteral | null>
